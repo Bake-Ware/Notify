@@ -1,0 +1,74 @@
+﻿<Window x:Class="WpfApplication1.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="191" Width="487" WindowStyle="None" Topmost="True" AllowsTransparency="True" Background="{x:Null}" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid Width="458">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="376*" />
+            <ColumnDefinition Width="74*" />
+            <ColumnDefinition Width="8*" />
+        </Grid.ColumnDefinitions>
+        <Polygon
+            Points="20,0 400,0 420,20 420,40 440,40 420,60 420,100 20,100 20,60" Name="poly" StrokeThickness="1" Margin="10,10,-10,-10" Grid.ColumnSpan="3" MouseEnter="poly_MouseEnter" MouseLeave="poly_MouseLeave">
+            <Polygon.Stroke>
+                <SolidColorBrush Color="Green" Opacity="1"/>
+            </Polygon.Stroke>
+            <Polygon.Fill>
+                <SolidColorBrush Color="Green" Opacity="0.8"/>
+            </Polygon.Fill>
+            <Polygon.Triggers>
+                <EventTrigger RoutedEvent="Polygon.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="poly"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0.0" To="1.0" Duration="0:0:1">
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Storyboard.TargetName="pic"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0.0" To="1.0" Duration="0:0:1">
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Storyboard.TargetName="button1"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0.0" To="1.0" Duration="0:0:1">
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Polygon.Unloaded">
+                    <BeginStoryboard>
+                        <Storyboard Name="closeStoryBoard" Completed="closeStoryBoard_Completed_1">
+                            <DoubleAnimation
+                                Storyboard.TargetName="poly"
+                                Storyboard.TargetProperty="Opacity"
+                                From="1.0" To="0.0" Duration="0:0:1">
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Storyboard.TargetName="pic"
+                                Storyboard.TargetProperty="Opacity"
+                                From="1.0" To="0.0" Duration="0:0:1">
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                Storyboard.TargetName="button1"
+                                Storyboard.TargetProperty="Opacity"
+                                From="1.0" To="0.0" Duration="0:0:1">
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Polygon.Triggers>
+        </Polygon>
+        <Polygon
+            Points="320,100 320,0 400,0 420,20 420,100" Name="pic" Margin="-290,10,208,-10" MouseEnter="poly_MouseEnter" MouseLeave="poly_MouseLeave">
+            <Polygon.Fill>
+                <ImageBrush ImageSource="/Notify;component/Images/oh-the-huge-manatee.jpg" Stretch="UniformToFill" TileMode="None" />
+            </Polygon.Fill>
+        </Polygon>
+        <Label Content="Notification popup" Height="34" HorizontalAlignment="Left" Margin="129,5,0,0" Name="label1" VerticalAlignment="Top" Width="289" Foreground="#FF343434" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="2" MouseLeave="poly_MouseLeave" MouseEnter="poly_MouseEnter" MouseDown="label1_MouseDown" />
+        <Label Content="Notification popup" FontSize="12" FontWeight="Bold" Foreground="#FF343434" Height="56" HorizontalAlignment="Left" Margin="129,28,0,0" Name="label2" VerticalAlignment="Top" Width="297" Grid.ColumnSpan="2" MouseEnter="poly_MouseEnter" MouseLeave="poly_MouseLeave" />
+        <Button Content="X" Height="20" HorizontalAlignment="Left" Margin="33,89,0,0" Name="button1" VerticalAlignment="Top" Width="20" Click="button1_Click_1" Background="#AE008000" BorderBrush="Green" Foreground="Black" Grid.Column="1" MouseEnter="poly_MouseEnter" MouseLeave="poly_MouseLeave" />
+    </Grid>
+</Window>
