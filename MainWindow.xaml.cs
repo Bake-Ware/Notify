@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.Windows.Media.Animation;
 using System.Windows.Interop;
 
+
 namespace WpfApplication1
 {
     /// <summary>
@@ -26,12 +27,14 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             Window1 pop = new Window1();
             pop.Show();
+            
             pop.label1.Content = this.textBox1.Text;
             pop.label2.Content = this.textBox2.Text;
 

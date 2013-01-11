@@ -20,11 +20,22 @@ namespace WpfApplication1
     /// </summary>
     public partial class Window1 : Window
     {
+        public static int popcounter = 0;
         public Window1()
         {
             InitializeComponent();
+            this.Loaded += new RoutedEventHandler(MainWindow_Loaded);
         }
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Left = (SystemParameters.VirtualScreenWidth / 2) - this.Width;
+            //MessageBox.Show(Convert.ToString(SystemParameters.VirtualScreenWidth));
+            //this.Left = 0;
+            this.Top = popcounter;
+            //this.Height = SystemParameters.VirtualScreenHeight;
 
+            popcounter += Convert.ToInt32(this.Height) - 90;
+        }
         private bool closeStoryBoardCompleted = false;
 
         private void Window_Closing(object sender, CancelEventArgs e)
